@@ -1,0 +1,18 @@
+# Claude Title plugin manifest.
+# Names each tab after its Claude Code session title alone — no directory,
+# no branch, no agent name. Nothing to build: it's a plain Python script.
+
+id = "claude-title"
+name = "Claude Title"
+version = "0.1.0"
+min_herdr_version = "0.8.2"
+description = "Names a tab after its Claude Code session title, nothing else"
+platforms = ["linux", "macos", "windows"]
+
+[[startup]]
+platforms = ["linux", "macos"]
+command = ["python3", "claude_title.py"]
+
+[[startup]]
+platforms = ["windows"]
+command = ["python", "claude_title.py"]
