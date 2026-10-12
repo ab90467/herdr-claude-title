@@ -17,6 +17,7 @@ import time
 
 POLL_SECONDS = 2
 MAX_TITLE_LENGTH = 60
+EMOJI_PREFIX = "🤖 "
 
 SESSION_ID_RE = re.compile(r"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$")
 CLAUDE_HOME = os.environ.get("CLAUDE_CONFIG_DIR") or os.path.expanduser("~/.claude")
@@ -147,8 +148,9 @@ def main():
                 if last.get(tab_id) == title:
                     continue
 
-                herdr("tab", "rename", tab_id, title)
-                print(f"claude-title: renamed tab {tab_id} -> {title!r}", flush=True)
+                display_title = EMOJI_PREFIX + title
+                herdr("tab", "rename", tab_id, display_title)
+                print(f"claude-title: renamed tab {tab_id} -> {display_title!r}", flush=True)
                 last[tab_id] = title
 
             if claude_panes == 0:
